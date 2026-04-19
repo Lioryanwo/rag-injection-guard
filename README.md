@@ -260,8 +260,7 @@ python -m src.evaluation.plot_results --output-dir results/figures
 | Name | Student ID |
 |------|-----------|
 | Lior Yanwo | — |
-| Stas Shubaev | — |
-| Kiril Bial | — |
+| Nadav itzhaki | — |
 
 ---
 
