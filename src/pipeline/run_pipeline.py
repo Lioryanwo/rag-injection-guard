@@ -1,4 +1,3 @@
-"""run_pipeline.py — Full end-to-end RAG-Spoofing pipeline."""
 from __future__ import annotations
 import subprocess, sys
 from pathlib import Path

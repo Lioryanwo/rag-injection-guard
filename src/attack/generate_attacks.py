@@ -1,11 +1,3 @@
-"""
-generate_attacks.py — LLM-based RAG spoof chunk generation.
-
-Satisfies Dr. Apartsin's 3 requirements:
-  1. Diverse  — 5 writing styles, each call unique
-  2. No real information — factually wrong on purpose
-  3. High embedding similarity — query keywords woven naturally
-"""
 from __future__ import annotations
 import argparse, json, os, random, re, time
 from pathlib import Path

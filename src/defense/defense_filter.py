@@ -1,14 +1,3 @@
-"""
-defense_filter.py — Text-only defense. Never reads is_spoof or attack_type.
-
-Six suspicion signals (all derived from chunk text + query only):
-  1. query_overlap_ratio   — fraction of query keywords in chunk
-  2. mention_ratio         — chunk vocabulary dominated by query words
-  3. surface_pattern_hits  — known spoof template phrases
-  4. lexical_diversity     — TTR (real passages score ≥ 0.7)
-  5. false_claim_density   — recycled verbatim false-claim phrases
-  6. structural_anomaly    — "Question: / Answer-focused note:" headers
-"""
 from __future__ import annotations
 import argparse, json, re
 from pathlib import Path

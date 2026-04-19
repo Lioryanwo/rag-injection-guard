@@ -1,9 +1,3 @@
-"""
-evaluate_attack.py — Measures retrieval degradation under attack.
-
-Fixed: reads spoof_chunks.jsonl directly (was expecting a non-existent
-spoof_candidates.json with a different schema).
-"""
 from __future__ import annotations
 import argparse, json
 from pathlib import Path
