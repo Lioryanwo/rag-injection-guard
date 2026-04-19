@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from sentence_transformers import SentenceTransformer; SentenceTransformer\\('sentence-transformers/all-MiniLM-L6-v2', local_files_only=True\\)\")",
+      "Bash(tasklist)",
+      "Bash(awk '{print $2, $5}')"
+    ]
+  }
+}
