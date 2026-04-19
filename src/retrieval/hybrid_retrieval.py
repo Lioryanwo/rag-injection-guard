@@ -43,7 +43,7 @@ def main() -> None:
     index    = faiss.read_index(str(args.index_dir / "index.faiss"))
     with (args.index_dir / "metadata.pkl").open("rb") as f:
         metadata = pickle.load(f)
-    model = SentenceTransformer(args.model_name)
+    model = SentenceTransformer(args.model_name, local_files_only=True)
     bm25  = BM25Okapi([_tok(item["text"]) for item in metadata])
 
     results: Dict[str, List[Dict]] = {}

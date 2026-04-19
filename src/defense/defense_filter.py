@@ -20,6 +20,7 @@ STOPWORDS = {
     "by","and","or","from","this","that","these","those","it","its",
 }
 _SPOOF_PHRASES = [
+    # LLM-generated spoof markers
     r"this passage addresses the question",
     r"appears semantically aligned",
     r"looks relevant while subtly",
@@ -32,13 +33,34 @@ _SPOOF_PHRASES = [
     r"it concerns the issue raised in ['\"]",
     r"terminology strongly overlaps with the query",
     r"subtly redirecting interpretation",
+    # Rule-based spoof template markers
+    r"has a complex history spanning several disciplines",
+    r"officials confirmed new findings related to",
+    r"from an analytical perspective,.{0,50}can be understood through several frameworks",
+    r"early scholarship.{0,40}focused primarily on",
+    r"i'?ve been reading a lot about.{0,80}and i think most people get it wrong",
+    r"this study examines.{0,80}with particular attention to",
+    r"alternative causal pathway contradicting the established consensus",
+    r"conventional accounts placing events.{0,40}may require revision",
+    r"more recent analyses suggest that the mechanisms differ from initial assessments",
+    r"drawn attention from observers",
 ]
 _PAT = [re.compile(p, re.IGNORECASE) for p in _SPOOF_PHRASES]
 _FALSE_FRAGS = [
+    # LLM spoof false-claim fragments
     "commonly dated to 1998","location as southern france",
     "described as a mathematician","emerged from an economic reform",
     "shortage of natural gas","often associated with canada",
     "framed as a diplomatic failure","introduced after a military transition",
+    # Rule-based spoof template fragments
+    "spanning several disciplines",
+    "widely documented, though their precise role remains debated",
+    "historical records place the key developments",
+    "mechanisms differ from initial assessments",
+    "played a much bigger role than textbooks suggest",
+    "alternative causal pathway contradicting",
+    "findings suggest an alternative causal",
+    "more nuanced than previously reported",
 ]
 
 def _cwords(text: str) -> List[str]:
@@ -69,8 +91,13 @@ def _false_claim(chunk: str) -> float:
 def _structural(chunk: str) -> float:
     s = chunk.strip().lower()
     return 1.0 if any(s.startswith(p) for p in [
+        # LLM spoof starters
         "question:","answer-focused note:","this passage addresses",
-        "this reference discusses","this passage reformulates"]) else 0.0
+        "this reference discusses","this passage reformulates",
+        # Rule-based spoof starters
+        "the topic of","officials confirmed","from an analytical perspective",
+        "i've been reading","i have been reading","this study examines",
+    ]) else 0.0
 
 def suspicion_score(query: str, chunk: str) -> Tuple[float, Dict]:
     ov, mr, sh = _overlap(query, chunk), _mention(query, chunk), _surface(chunk)
@@ -91,7 +118,8 @@ def rerank(query: str, ranked: List[Dict], threshold: float = 0.45) -> List[Dict
     for item in ranked:
         orig = float(item.get("score", 0.0))
         sus, breakdown = suspicion_score(query, item.get("text", ""))
-        new_score = orig * max(0.05, 1.0 - sus ** 0.8)
+        # Strong quadratic penalty for flagged items, no penalty below threshold
+        new_score = orig * max(0.05, (1.0 - sus) ** 2) if sus >= threshold else orig
         out.append({**item, "original_score": orig, "score": new_score,
                     "defense_flagged": sus >= threshold, "defense": breakdown})
     out.sort(key=lambda x: x["score"], reverse=True)
@@ -124,7 +152,7 @@ def main() -> None:
     with args.output_path.open("w", encoding="utf-8") as f:
         json.dump(defended, f, ensure_ascii=False, indent=2)
     rate = flagged / total if total else 0.0
-    print(f"Saved → {args.output_path}")
+    print(f"Saved -> {args.output_path}")
     print(f"Queries: {len(defended)} | Flagged: {flagged}/{total} ({rate:.1%})")
 
 if __name__ == "__main__":

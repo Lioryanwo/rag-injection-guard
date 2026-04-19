@@ -1,6 +1,6 @@
 """run_pipeline.py — Full end-to-end RAG-Spoofing pipeline."""
 from __future__ import annotations
-import os, subprocess, sys
+import subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -16,11 +16,9 @@ def eval_ret(py, results, output):
          "--results-path", results, "--output-path", output])
 
 def maybe_llm(py, results, output, top_k=1):
-    if os.getenv("OPENAI_API_KEY"):
-        run([py, "-m", "src.evaluation.evaluate_llm",
-             "--results-path", results, "--output-path", output, "--top-k", str(top_k)])
-    else:
-        print(f"\n[SKIP LLM JUDGE — no OPENAI_API_KEY]  output: {output}")
+    run([py, "-m", "src.evaluation.evaluate_llm",
+         "--results-path", results, "--output-path", output,
+         "--top-k", str(top_k), "--max-queries", "100"])
 
 def main() -> None:
     py = sys.executable
@@ -59,9 +57,8 @@ def main() -> None:
     attack_cmd = [py, "-m", "src.attack.generate_attacks",
                   "--queries-path","data/processed/val_queries.jsonl",
                   "--output-path","data/processed/spoof_chunks.jsonl",
-                  "--spoofs-per-style","1","--max-queries","300"]
-    if os.getenv("OPENAI_API_KEY"):
-        attack_cmd.append("--use-llm")
+                  "--spoofs-per-style","1","--max-queries","300",
+                  "--use-llm"]
     run(attack_cmd)
     run([py, "-m", "src.attack.inject_attacks",
          "--real-chunks","data/processed/corpus_chunks.jsonl",

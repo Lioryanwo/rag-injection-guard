@@ -40,7 +40,7 @@ def main() -> None:
         metadata = pickle.load(f)
 
     print(f"Loading model: {args.model_name}")
-    model = SentenceTransformer(args.model_name)   # no local_files_only
+    model = SentenceTransformer(args.model_name, local_files_only=True)
 
     questions = [q["question"] for q in queries]
     prepared  = _prefix(questions, args.model_name)

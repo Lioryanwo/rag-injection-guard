@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse, json, os, random, re, time
 from pathlib import Path
 from typing import Dict, List, Optional
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=True)
 
 try:
     from openai import OpenAI

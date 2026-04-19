@@ -33,3 +33,9 @@ Thumbs.db
 *.egg-info/
 dist/
 build/
+
+# Claude memory
+.claude/
+
+# Office temp files
+~$*
