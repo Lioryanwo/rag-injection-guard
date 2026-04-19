@@ -271,3 +271,4 @@ python -m src.evaluation.plot_results --output-dir results/figures
 - Chen et al. (2024). BAAI/bge-m3: Multi-Functionality, Multi-Linguality, and Multi-Granularity. *arXiv*.
 - Reimers & Gurevych (2019). Sentence-BERT. *EMNLP*.
 - Project supervisor: Dr. Alexander Apartsin, School of Computer Science, HIT
+# rag-injection-guard
