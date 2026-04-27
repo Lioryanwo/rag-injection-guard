@@ -19,9 +19,9 @@ Retrieval-Augmented Generation (RAG) systems answer user queries by retrieving d
 
 ## RAG spoofing explanation
 
-<img width="748" height="332" alt="image" src="https://github.com/user-attachments/assets/a35f8864-3cf2-439c-a38a-914909a3c9d7" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/5d75f6e8-8a12-43f7-9447-8262eaa45667" />
 
-```
+---
 
 This project investigates **RAG spoofing** — injecting synthetic documents that have high embedding similarity to frequent queries but contain **no real information**. The goal is to flood retrieval results with useless content so the LLM cannot produce a grounded answer.
 
@@ -39,12 +39,6 @@ This project investigates **RAG spoofing** — injecting synthetic documents tha
 ## System Pipeline
 
 <img width="1062" height="286" alt="image" src="https://github.com/user-attachments/assets/f7928c94-d987-44c8-95d9-4933b07c31c7" />
-
----
-
-## Use Case
-
-<img width="1624" height="1128" alt="image" src="https://github.com/user-attachments/assets/502864c6-e6b4-4626-975c-4a931228963e" />
 
 ---
 
