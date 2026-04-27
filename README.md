@@ -44,7 +44,7 @@ This project investigates **RAG spoofing** — injecting synthetic documents tha
 
 ## Sequence Diagram
 
-<img width="1824" height="1078" alt="image" src="https://github.com/user-attachments/assets/18a1e432-fb96-46a0-aa2e-f2b81b949029" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/662f4c45-b40a-468f-ac96-ad5c9bfe1496" />
 
 ---
 ## Core Contributions
