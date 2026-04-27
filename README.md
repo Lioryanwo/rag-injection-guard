@@ -19,7 +19,7 @@ Retrieval-Augmented Generation (RAG) systems answer user queries by retrieving d
 
 ## RAG spoofing explanation
 
-<img width="748" height="326" alt="image" src="https://github.com/user-attachments/assets/fd254269-2916-4fe8-8f89-5e9319a9df1d" />
+<img width="748" height="332" alt="image" src="https://github.com/user-attachments/assets/a35f8864-3cf2-439c-a38a-914909a3c9d7" />
 
 ```
 
