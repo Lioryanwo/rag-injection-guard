@@ -16,14 +16,11 @@
 
 Retrieval-Augmented Generation (RAG) systems answer user queries by retrieving documents from a vector database and passing them to an LLM. This creates a silent vulnerability:
 
-```text
-User Query
-   ↓
-Retriever selects top-k chunks from corpus
-   ↓                        ↑
-LLM trusts retrieved evidence    Attacker injects
-   ↓                        fake chunks here
-Wrong / poisoned answer
+```
+## RAG spoofing explanation
+
+<img width="748" height="326" alt="image" src="https://github.com/user-attachments/assets/fd254269-2916-4fe8-8f89-5e9319a9df1d" />
+
 ```
 
 This project investigates **RAG spoofing** — injecting synthetic documents that have high embedding similarity to frequent queries but contain **no real information**. The goal is to flood retrieval results with useless content so the LLM cannot produce a grounded answer.
