@@ -41,10 +41,24 @@ This project investigates **RAG spoofing** — injecting synthetic documents tha
 
 ## System Pipeline
 
-<img width="1265" height="344" alt="image" src="https://github.com/user-attachments/assets/b23477c7-196e-4e06-908a-8c04e24c5433" />
+<img width="787" height="206" alt="image" src="https://github.com/user-attachments/assets/9b73e221-07d8-4d52-b6f7-cc27838873d7" />
 
 ---
 
+---
+
+## Use Case
+
+<img width="812" height="564" alt="image" src="https://github.com/user-attachments/assets/96e1ce64-2d5c-449e-9868-caeb74e0df24" />
+
+---
+---
+
+## Sequence Diagram
+
+<img width="751" height="451" alt="image" src="https://github.com/user-attachments/assets/7a9c7d04-efdf-45b2-9424-99d15b85c3ed" />
+
+---
 ## Core Contributions
 
 ### 🗡️ Attack Layer
