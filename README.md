@@ -41,26 +41,7 @@ This project investigates **RAG spoofing** — injecting synthetic documents tha
 
 ## System Pipeline
 
-```text
-  SQuAD v1.1 Corpus
-        ↓
-  Chunk Documents (120w, 30 overlap)
-        ↓
-  Build Dense + Sparse Indexes
-        ↓
-  ┌─────────────────────┐
-  │  Generate Spoof     │  ← 5 writing styles × GPT-4o-mini
-  │  Chunks (1,500)     │
-  └─────────────────────┘
-        ↓
-  Inject into Corpus → Rebuild Index
-        ↓
-  Retrieve Top-5 Results
-        ↓
-  Apply Defense Layer (6 text-only signals)
-        ↓
-  Evaluate: Recall@5 · Spoof Win Rate · LLM Judge
-```
+<img width="1265" height="344" alt="image" src="https://github.com/user-attachments/assets/b23477c7-196e-4e06-908a-8c04e24c5433" />
 
 ---
 
