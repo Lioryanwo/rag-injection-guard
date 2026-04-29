@@ -24,16 +24,20 @@ malicious or spoofed documents can be inserted into the knowledge base and ranke
 
 ---
 
-This project investigates **RAG spoofing** — injecting synthetic documents that have high embedding similarity to frequent queries but contain **no real information**. The goal is to flood retrieval results with useless content so the LLM cannot produce a grounded answer.
+Project Motivation
 
-**Why it matters:**
-- RAG is widely deployed in production (search, Q&A, enterprise copilots)
-- Retrieval quality is rarely audited at inference time
-- A spoofing attack requires **no access to the model** — only write access to the corpus
+This project investigates RAG spoofing — the injection of synthetic documents that achieve high embedding similarity to user queries while containing no genuine supporting information.
 
-**Why it is hard to defend:**
-- Spoof chunks must look semantically relevant without containing real information
-- A realistic defense cannot use ground-truth labels — it must work from text alone
+The objective is to pollute retrieval rankings with misleading content, causing the LLM to generate ungrounded or incorrect answers.
+
+Why It Matters
+RAG systems are widely deployed in production environments (search, Q&A, enterprise copilots).
+Retrieval quality is rarely audited at inference time.
+A spoofing attack requires no access to the model itself — only the ability to insert documents into the corpus.
+Why It Is Hard to Defend
+Spoofed chunks must appear semantically relevant while containing no real evidence.
+A practical defense cannot rely on ground-truth labels.
+Detection must operate using only the retrieved text and ranking signals.
 
 ---
 
