@@ -15,6 +15,7 @@
 ## What is RAG Spoofing?
 
 Retrieval-Augmented Generation (RAG) systems answer user queries by retrieving documents from a vector database and passing them to an LLM. This creates a silent vulnerability:
+malicious or spoofed documents can be inserted into the knowledge base and ranked as relevant, misleading the model without changing the LLM itself.
 
 
 ## RAG spoofing explanation
