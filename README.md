@@ -24,13 +24,13 @@ malicious or spoofed documents can be inserted into the knowledge base and ranke
 
 ---
 
-Project Motivation
+# Project Motivation:
 
 This project investigates RAG spoofing — the injection of synthetic documents that achieve high embedding similarity to user queries while containing no genuine supporting information.
 
 The objective is to pollute retrieval rankings with misleading content, causing the LLM to generate ungrounded or incorrect answers.
 
-Why It Matters
+# Why It Matters:
 RAG systems are widely deployed in production environments (search, Q&A, enterprise copilots).
 Retrieval quality is rarely audited at inference time.
 A spoofing attack requires no access to the model itself — only the ability to insert documents into the corpus.
