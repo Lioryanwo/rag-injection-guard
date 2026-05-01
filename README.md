@@ -86,7 +86,8 @@ We generate synthetic spoof chunks that satisfy **3 simultaneous constraints** (
 
 ### 🛡️ Defense Layer
 
-A **text-only reranker** that detects spoofs without ground-truth labels — 6 suspicion signals:
+A retrieval reranker designed for semantic spoofing attacks.
+It penalizes chunks that are highly similar to the query but provide weak factual support or low answerability.
 
 | Signal | What it detects |
 |--------|----------------|
