@@ -235,3 +235,4 @@ python -m src.evaluation.plot_results --output-dir results/figures
 
 > *RAG systems are only as trustworthy as the evidence they retrieve.*  
 > *Protecting retrieval is the first step toward trustworthy generation.*
+
